@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acknowledgment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f7f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        p {
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .button-group {
+            margin-top: 20px;
+        }
+        .button-group button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank You for Registering!</h1>
+        <p>Your Registration ID is: <strong id="regId"></strong></p>
+        <p>Your Form Type is: <strong id="formType"></strong></p>
+        <p>Amount Paid: <strong id="paymentAmount"></strong></p>
+        
+        <div class="button-group">
+            <!-- Print Button -->
+            <button onclick="printPage()">Print Acknowledgment</button>
+            
+            <!-- Home Return Button (redirects to form page) -->
+            <button onclick="goHome()">Return to Form</button>
+        </div>
+    </div>
+
+    <script>
+        // Extract the Registration ID, Form Type, and Payment Amount from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const registrationId = urlParams.get('regId');
+        const formType = urlParams.get('formType');
+        const paymentAmount = urlParams.get('paymentAmount');
+
+        // Display the extracted values
+        document.getElementById('regId').textContent = registrationId;
+        document.getElementById('formType').textContent = formType;
+        document.getElementById('paymentAmount').textContent = "₹" + paymentAmount;
+
+        // Function to print the page
+        function printPage() {
+            window.print(); // Opens the print dialog
+        }
+
+        // Function to return to the form page
+        function goHome() {
+            window.location.href = 'far.html'; // Redirect to the form page (far.html)
+        }
+    </script>
+</body>
+</html>
